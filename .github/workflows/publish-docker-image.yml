@@ -8,7 +8,7 @@ env:
   # Use docker.io for Docker Hub if empty
   REGISTRY: registry.cn-hangzhou.aliyuncs.com
   # <repo>
-  IMAGE_NAME: venssy/crossover 
+  IMAGE_NAME: crossover 
   # ${{ github.event.repository.name }}
 
 
@@ -56,6 +56,6 @@ jobs:
         with:
           context: .
           push: ${{ github.event_name != 'pull_request' }}
-          tags: 'latest'
+          tags: ${{ env.REGISTRY }}/${{ secrets.DOCKER_HUB_USER }}/${{ env.IMAGE_NAME }}:latest
           # ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
