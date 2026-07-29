@@ -6,7 +6,7 @@ on: workflow_dispatch
 
 env:
   # Use docker.io for Docker Hub if empty
-  REGISTRY: docker.io
+  REGISTRY: registry.cn-hangzhou.aliyuncs.com
   # <repo>
   IMAGE_NAME: ${{ github.event.repository.name }}
 
