@@ -23,6 +23,17 @@ RUN echo "root:root" | chpasswd
 # set password of ${USER} to ${USER}
 RUN echo "${USER}:${USER}" | chpasswd
 
+RUN sed -i \
+    's|^mirrorlist=|#mirrorlist=|g' \
+    /etc/yum.repos.d/CentOS-*.repo \
+    && sed -i \
+    's|^#baseurl=http://mirror.centos.org|baseurl=https://mirrors.aliyun.com/centos-vault|g' \
+    /etc/yum.repos.d/CentOS-*.repo
+
+RUN yum install -y https://mirrors.aliyun.com/epel/epel-release-latest-7.noarch.rpm \
+    && sed -i 's|^metalink|#metalink|' /etc/yum.repos.d/epel.repo \
+    && sed -i 's|^#baseurl=https://download.fedoraproject.org|baseurl=https://mirrors.aliyun.com/epel|' /etc/yum.repos.d/epel.repo
+    
 RUN yum check-update -y ; \
     yum install -y --setopt=tsflags=nodocs tigervnc-server xorg-x11-server-utils xorg-x11-server-Xvfb xorg-x11-fonts-* motif xterm && \
     yum install -y --setopt=tsflags=nodocs sudo which wget file zenity python3&& \
