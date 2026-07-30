@@ -42,6 +42,6 @@ jobs:
         with:
           context: .
           push: ${{ github.event_name != 'pull_request' }}
-          tags: ${{ env.REGISTRY }}/${{ secrets.DOCKER_HUB_USER }}/${{ env.IMAGE_NAME }}:latest
+          tags: ${{ env.REGISTRY }}/venssy/${{ env.IMAGE_NAME }}:latest
           # ${{ steps.meta.outputs.tags }}
           # labels: ${{ steps.meta.outputs.labels }}
