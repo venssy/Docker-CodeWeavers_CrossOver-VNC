@@ -26,7 +26,12 @@ RUN echo "${USER}:${USER}" | chpasswd
 # RUN  curl -o /etc/yum.repos.d/CentOS-Base.repo http://mirrors.aliyun.com/repo/Centos-7.repo && \
 #    yum clean all && \
 #    yum makecache
-    
+
+RUN sed -i 's/mirrorlist/#mirrorlist/g' /etc/yum.repos.d/CentOS-* && \
+    sed -i 's|#baseurl=http://mirror.centos.org|baseurl=http://vault.centos.org|g' /etc/yum.repos.d/CentOS-* && \
+    yum clean all && \
+    yum makecache
+
 RUN yum check-update -y ; \
     yum install -y --setopt=tsflags=nodocs tigervnc-server cron xorg-x11-server-utils xorg-x11-server-Xvfb xorg-x11-fonts-* motif xterm && \
     yum install -y --setopt=tsflags=nodocs sudo which wget file zenity python3&& \
