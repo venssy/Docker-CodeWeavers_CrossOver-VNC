@@ -34,6 +34,7 @@ RUN sed -i 's/mirrorlist/#mirrorlist/g' /etc/yum.repos.d/CentOS-* && \
 
 RUN yum check-update -y ; \
     yum install -y epel-release && \
+    yum install -y dnf-plugins-core && \
     yum config-manager --set-enabled powertools && \
     yum install -y --setopt=tsflags=nodocs tigervnc-server cronie xorg-x11-server-utils xorg-x11-server-Xvfb xorg-x11-fonts-* motif xterm && \
     yum install -y --setopt=tsflags=nodocs sudo which wget file zenity python3&& \
