@@ -1,6 +1,6 @@
 # Using CentOS 7 base image and VNC
 
-FROM centos:7
+FROM centos:8
 MAINTAINER john.shine <mr.john.shine@gmail.com>
 LABEL io.openshift.expose-services="5901:tcp"
 
