@@ -28,7 +28,7 @@ RUN  curl -o /etc/yum.repos.d/CentOS-Base.repo http://mirrors.aliyun.com/repo/Ce
     yum makecache
     
 RUN yum check-update -y ; \
-    yum install -y --setopt=tsflags=nodocs tigervnc-server xorg-x11-server-utils xorg-x11-server-Xvfb xorg-x11-fonts-* motif xterm && \
+    yum install -y --setopt=tsflags=nodocs tigervnc-server cron xorg-x11-server-utils xorg-x11-server-Xvfb xorg-x11-fonts-* motif xterm && \
     yum install -y --setopt=tsflags=nodocs sudo which wget file zenity python3&& \
     yum install -y --setopt=tsflags=nodocs freetype.i686 freetype.x86_64 glibc.i686 glibc.x86_64 libICE.i686 libICE.x86_64 libSM.i686 libSM.x86_64 libX11.i686 libX11.x86_64 libXext.i686 libXext.x86_64 libgcc.i686 libgcc.x86_64 libpng.i686 libpng.x86_64 nss-mdns.i686 nss-mdns.x86_64 pygtk2 zlib.i686 zlib.x86_64 && \
     /bin/echo -e "\n${USER}        ALL=(ALL)       NOPASSWD: ALL" >> /etc/sudoers && \
@@ -61,6 +61,7 @@ RUN chown -R ${UID}:${GID} ${HOME} && \
 
 WORKDIR ${HOME}
 
+ADD unlimited-crossover-trial.sh /unlimited-crossover-trial.sh
 ADD entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
 
