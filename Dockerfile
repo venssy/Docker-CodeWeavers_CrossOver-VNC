@@ -23,9 +23,9 @@ RUN echo "root:root" | chpasswd
 # set password of ${USER} to ${USER}
 RUN echo "${USER}:${USER}" | chpasswd
 
-RUN  curl -o /etc/yum.repos.d/CentOS-Base.repo http://mirrors.aliyun.com/repo/Centos-7.repo && \
-    yum clean all && \
-    yum makecache
+# RUN  curl -o /etc/yum.repos.d/CentOS-Base.repo http://mirrors.aliyun.com/repo/Centos-7.repo && \
+#    yum clean all && \
+#    yum makecache
     
 RUN yum check-update -y ; \
     yum install -y --setopt=tsflags=nodocs tigervnc-server cron xorg-x11-server-utils xorg-x11-server-Xvfb xorg-x11-fonts-* motif xterm && \
