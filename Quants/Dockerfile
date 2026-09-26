@@ -8,7 +8,7 @@ USER root
 
 ENV DISPLAY=":1"
 ENV USER="crossover"
-ENV UID=1000
+ENV UID=1001
 ENV GID=0
 ENV HOME=/home/${USER}
 ARG vnc_password=""
