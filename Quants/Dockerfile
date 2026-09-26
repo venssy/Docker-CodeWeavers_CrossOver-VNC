@@ -28,7 +28,7 @@ RUN echo "${USER}:${USER}" | chpasswd
 
 RUN dpkg --add-architecture i386 && \
     apt-get update -y && \
-    apt-get install -y --no-install-recommends apt-utils sudo git curl wget ca-certificates python3 python3-numpy fluxbox libc6:i386 libstdc++6:i386 && \
+    apt-get install -y --no-install-recommends apt-utils sudo git curl wget locales ca-certificates python3 python3-numpy fluxbox libc6:i386 libstdc++6:i386 && \
     apt-get install -y --no-install-recommends tigervnc-standalone-server tigervnc-common xvfb xterm && \
 
     /bin/echo -e "\n${USER}        ALL=(ALL)       NOPASSWD: ALL" >> /etc/sudoers && \
