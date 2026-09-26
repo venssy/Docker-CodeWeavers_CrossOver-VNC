@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 [ -r /etc/sysconfig/i18n ] && . /etc/sysconfig/i18n
 export LANG

@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 #
 if [[ -f ${HOME}/.vnc/passwd ]]; then
     echo "${vnc_password}" | vncpasswd -f > ${HOME}/.vnc/passwd
