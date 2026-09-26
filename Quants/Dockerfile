@@ -26,11 +26,11 @@ RUN echo "root:root" | chpasswd
 # set password of ${USER} to ${USER}
 RUN echo "${USER}:${USER}" | chpasswd
 
-RUN apt-get update -y && \
+RUN dpkg --add-architecture i386 && \
+    apt-get update -y && \
     apt-get install -y --no-install-recommends apt-utils sudo git curl wget ca-certificates python3 python3-numpy fluxbox libc6:i386 libstdc++6:i386 && \
     apt-get install -y --no-install-recommends tigervnc-standalone-server tigervnc-common xvfb xterm && \
 
-    dpkg --add-architecture i386 && \
     /bin/echo -e "\n${USER}        ALL=(ALL)       NOPASSWD: ALL" >> /etc/sudoers && \
 
     wget https://github.com/novnc/noVNC/archive/v1.3.0.tar.gz -O /tmp/noVNC.tar.gz && \
